@@ -11,13 +11,13 @@ class AdminSiteTest(TestCase):
         self.admin_user = get_user_model().objects.create_superuser(
             email='admin@admin.com',
             password='password123',
-            phone_number='+1999999999'
+
         )
         self.client.force_login(self.admin_user)
         self.user = get_user_model().objects.create_user(
             email='test@test.com',
             password='password123',
-            phone_number='+1999999880',
+
             name='Test User'
         )
 
