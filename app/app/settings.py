@@ -58,7 +58,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,5 +127,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+#
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+#Static dirs is location of any additional dirs where django can find static files to serve .
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'templates/static')
+]
 
+#Media Folder Settings
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
+#Custom user authentication model
 AUTH_USER_MODEL = 'core.USER'
+
+
+# Email configs
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER='vrushangtest@gmail.com'
+EMAIL_HOST_PASSWORD='root@091098'
+EMAIL_USE_TLS=True

@@ -7,9 +7,10 @@ from django.test import TestCase
 class CommandTests(TestCase):
 
     def test_wait_for_db_ready(self):
-        """ Test waiting for db when db is available
-         Patch is used to mock default database via connection handler as it gets actual database object item
-         """
+        """ 
+        Test waiting for db when db is available,
+        Patch is used to mock default database via connection handler as it gets actual database object item and returns true on calling object.
+        """
         with patch('django.db.utils.ConnectionHandler.__getitem__') as gi:
             gi.return_value = True
 
@@ -18,7 +19,9 @@ class CommandTests(TestCase):
 
     @patch('time.sleep', return_value=True)
     def test_wait_for_db(self, ts):
-        """ Test waiting for db """
+        """ 
+        Test waiting for db .
+        """
         with patch('django.db.utils.ConnectionHandler.__getitem__') as gi:
             # side_effect help us raise Errors
             gi.side_effect = [OperationalError] * 5 + [True]

@@ -2,7 +2,7 @@
 
 ![Build Status](https://api.travis-ci.org/vrushangdev/JobListingApp.svg?branch=master)
 
-###  Django api's with ionic mobile app .
+###  Django api's with flutter mobile app .
 
 #### Key Features (Detailed)
 *   Customized user model with phone_number

@@ -25,6 +25,7 @@ class PublicUserApiTests(TestCase):
         # Prepare Data To Be Sent As Payload
         payload = {
             'email': 'test@admin.com',
+            'phone_number':'07016396408',
             'password': 'admin',
             'name': 'Test Boy'
         }
@@ -43,6 +44,7 @@ class PublicUserApiTests(TestCase):
         payload = {
             'email': 'test@admin.com',
             'password': 'admin',
+            'phone_number':'07016396408',
             'name': 'Test Boy'
         }
         create_user(**payload)
@@ -55,6 +57,7 @@ class PublicUserApiTests(TestCase):
         payload = {
             'email': 'test@admin.com',
             'password': 'ago',
+            'phone_number':'07016396408',
             'name': 'Test Boy'
         }
         res = self.client.post(CREATE_USER_URL, payload)
@@ -68,7 +71,9 @@ class PublicUserApiTests(TestCase):
         """ Test that token is created for the user """
         payload = {
             'email': 'test@admin.com',
-            'password': 'testpass'
+            'password': 'testpass',
+            'phone_number':'07016396408',
+
         }
         create_user(**payload)
         res = self.client.post(TOKEN_URL, payload)
@@ -77,7 +82,7 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_invalid_credentials(self):
         """Test that token is not created if invalid credentials are given"""
-        create_user(email='test@vrushangdesai.com', password='testpass')
+        create_user(email='test@vrushangdesai.com',phone_number='07016396408', password='testpass')
         payload = {
             'email': 'test@vrushangdesai.com',
             'password': 'falsepass'
@@ -113,6 +118,7 @@ class PrivateUserApiTests(TestCase):
         self.user = create_user(
             email='test@vrushangdesai.com',
             password='testpass',
+            phone_number='07016396408',
             name='Test Boy'
         )
         self.client = APIClient()
