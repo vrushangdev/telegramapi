@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, phone_number, password=None,  **extra_fields):
+    def create_superuser(self, email, phone_number, password=None, **extra_fields):
         """Creates and saves a new super user"""
         user = self.create_user(email, phone_number=phone_number, **extra_fields)
         user.set_password(password)
@@ -38,4 +38,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS=['phone_number']
+    REQUIRED_FIELDS = ['phone_number']
